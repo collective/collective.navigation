@@ -1,3 +1,37 @@
 <?xml version="1.0"?>
 <registry>
+
+  <records prefix="plone.resources/collective.navigation"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++resource++collective.navigation/collective.navigation.js</value>
+      <value key="css">
+        <element>++resource++collective.navigation/collective.navigation.less</element>
+      </value>
+  </records>
+
+  <records
+      prefix="plone.resources/bundle-collective.navigation"
+      interface="Products.CMFPlone.interfaces.IResourceRegistry">
+    <value key="js">++plone++collective.navigation/bundle-collective.navigation.js</value>
+    <value key="css">
+      <element>++plone++collective.navigation/collective.navigation.less</element>
+    </value>
+  </records>
+
+  <records prefix="plone.bundles/bundle-collective.navigation"
+            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="merge_with">default</value>
+    <value key="resources">
+      <element>bundle-collective.navigation</element>
+    </value>
+    <value key="enabled">True</value>
+    <value key="jscompilation">++plone++static/bundle-collective.navigation.min.js</value>
+    <value key="csscompilation">++plone++static/bundle-collective.navigation-compiled.css</value>
+    <value key="last_compilation"></value>
+    <value key="depends">plone</value>
+    <value key="stub_js_modules">
+      <element>jquery</element>
+    </value>
+  </records>
+
 </registry>

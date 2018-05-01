@@ -1,3 +1,19 @@
 <?xml version="1.0"?>
 <registry>
+
+  <records
+      remove="True"
+      prefix="plone.resources/collective.navigation"
+      interface='Products.CMFPlone.interfaces.IResourceRegistry'/>
+
+  <records
+      remove="True"
+      prefix="plone.resources/bundle-collective.navigation"
+      interface="Products.CMFPlone.interfaces.IResourceRegistry"/>
+
+  <records
+      remove="True"
+      prefix="plone.bundles/bundle-collective.navigation"
+      interface='Products.CMFPlone.interfaces.IBundleRegistry'/>
+
 </registry>
