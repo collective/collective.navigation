@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.navigation">
+
+
+  <plone:static
+      name="collective.navigation"
+      type="plone"
+      directory="static"
+      />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.navigation"
+      directory="profiles/default"
+      description="Installs the collective.navigation add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.navigation (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.navigation add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".HiddenProfiles"
+      name="collective.navigation-hiddenprofiles"
+      />
+
+</configure>
