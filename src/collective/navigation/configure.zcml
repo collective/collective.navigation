@@ -4,12 +4,25 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.navigation">
 
-
   <plone:static
       name="collective.navigation"
       type="plone"
       directory="static"
       />
+
+  <plone:tile
+      name="collective.navigation"
+      title="Site Navigation"
+      description='A navigation tile'
+      add_permission="cmf.ModifyPortalContent"
+      class=".navigation.NavigationTile"
+      template="navigation.pt"
+      for="*"
+      permission="zope2.View"
+      />
+
+
+  <!-- setup -->
 
   <genericsetup:registerProfile
       name="default"

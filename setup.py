@@ -38,8 +38,11 @@ setup(
     zip_safe=False,
     install_requires=[
         'plone.api',
+        'plone.memoize',
+        'plone.tiles',
         'Products.GenericSetup>=1.8.2',
         'setuptools',
+        'zope.component',
     ],
     entry_points="""
     [z3c.autoinclude.plugin]
