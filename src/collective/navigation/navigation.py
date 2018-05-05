@@ -95,15 +95,18 @@ class NavigationTile(Tile):
         """
         out = u''
         for it in self.navtree.get(path, []):
-            out += u'<li class="{id} state-{review_state}">'.format(
+            sub = self.build_tree(path + '/' + it['id'])
+
+            out += u'<li class="{id}{has_sub_class}">'.format(
                 id=it['id'],
-                review_state=it['review_state']
+                has_sub_class=' has_subtree' if sub else '',
             )
-            out += u'<a href="{url}">{title}</a>'.format(
+            out += u'<a href="{url}" class="state-{review_state}">{title}</a>'.format(  # noqa
                 url=it['url'],
-                title=it['title']
+                review_state=it['review_state'],
+                title=it['title'],
             )
-            out += self.build_tree(path + '/' + it['id'])
+            out += sub
             out += u'</li>'
 
         out = u'<ul>' + out + u'</ul>' if out else ''
