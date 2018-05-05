@@ -21,6 +21,16 @@
       permission="zope2.View"
       />
 
+  <plone:tile
+      name="collective.navigation.tpl"
+      title="Site Navigation, template based"
+      description='A navigation tile with recursive template calls.'
+      add_permission="cmf.ModifyPortalContent"
+      class=".navigation.NavigationTile"
+      template="navigation_template.pt"
+      for="*"
+      permission="zope2.View"
+      />
 
   <!-- setup -->
 

@@ -1,0 +1,8 @@
+<tal:def define="path options/path; items python:view.navtree.get(path, [])" tal:condition="items">
+<ul>
+  <li tal:repeat="item items" class="${item/id} state-${item/review_state}">
+    <a href="${item/url}">${item/title}</a>
+    <tal:subtree replace="structure python:view.recurse(path=path + '/' + item['id'])"/>
+  </li>
+</ul>
+</tal:def>

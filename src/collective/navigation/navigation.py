@@ -2,6 +2,7 @@
 from datetime import datetime
 from plone.memoize import ram
 from plone.tiles import Tile
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component.hooks import getSite
 
 import plone.api
@@ -44,7 +45,7 @@ class NavigationTile(Tile):
 
     @property
     def navtree_depth(self):
-        return 3
+        return 2
 
     @property
     def navtree(self):
@@ -84,8 +85,14 @@ class NavigationTile(Tile):
         print('navtree: %s' % (datetime.now() - dt1).total_seconds())
         return ret
 
-    def build_tree(self, path):
+    # Template based recursive tree building
+    recurse = ViewPageTemplateFile('navigation_recurse.pt')
 
+    def build_tree(self, path):
+        """Non-template based recursive tree building.
+        3-4 times faster than template based.
+        See figures below.
+        """
         out = u''
         for it in self.navtree.get(path, []):
             out += u'<li class="{id} state-{review_state}">'.format(
@@ -112,11 +119,17 @@ this navigation tile vs webcouturier.dropdownmenu / global_sections viewlet
 
 Typical values:
 
-navigation tile, cold: 0.22s
-navigation tile, warm: 0.02s - 0.05s
-navigation tile, cached: 0.01s
+Navigation tile, non-template based tree building:
+cold: 0.22s
+warm: 0.02s - 0.05s
+cached: 0.01s - 0.03s
 
-global_section tile, cold: 7s
-global_section tile, warm: 0.5s - 0.8s
+Navigation tile, template based
+cold: 0.22s
+warm: 0.10s - 0.13s
+cached: 0.01s - 0.03s
 
+recursive global_sections tile (webcouturier.dropdownmenu):
+cold: 7s
+warm: 0.5s - 0.8s
 """
