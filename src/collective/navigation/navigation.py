@@ -103,8 +103,8 @@ class NavigationTile(Tile):
         return out
 
     @ram.cache(_result_cachekey)
-    def result(self):
-        return self.build_tree(self.navtree_path)
+    def __call__(self, *args, **kwargs):
+        return super(NavigationTile, self).__call__(*args, **kwargs)
 
 
 """
