@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object
+    meta_type="Plone Catalog Tool"
+    name="portal_catalog">
+  <index remove="True"
+      meta_type="BooleanIndex"
+      name="exclude_from_nav"/>
+</object>
+
