@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 from plone.memoize import ram
 from plone.tiles import Tile
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -53,7 +52,6 @@ class NavigationTile(Tile):
         if self._navtree is not None:
             return self._navtree
 
-        dt1 = datetime.now()
         types = plone.api.portal.get_registry_record('plone.displayed_types')
         lang_current = plone.api.portal.get_current_language()
 
@@ -81,8 +79,6 @@ class NavigationTile(Tile):
                 ret[pathkey] = [entry]
 
         self._navtree = ret
-
-        print('navtree: %s' % (datetime.now() - dt1).total_seconds())
         return ret
 
     # Template based recursive tree building
