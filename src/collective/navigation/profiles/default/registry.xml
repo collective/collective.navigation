@@ -24,9 +24,9 @@
     <value key="resources">
       <element>bundle-collective.navigation</element>
     </value>
-    <value key="enabled">True</value>
-    <value key="jscompilation">++plone++static/bundle-collective.navigation.min.js</value>
-    <value key="csscompilation">++plone++static/bundle-collective.navigation-compiled.css</value>
+    <value key="enabled">False</value><!-- TODO: enable when pattern is ready -->
+    <value key="jscompilation">++plone++collective.navigation/bundle-collective.navigation.min.js</value>
+    <value key="csscompilation">++plone++collective.navigation/bundle-collective.navigation-compiled.css</value>
     <value key="last_compilation"></value>
     <value key="depends">plone</value>
     <value key="stub_js_modules">
