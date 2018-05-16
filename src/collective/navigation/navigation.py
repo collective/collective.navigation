@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from plone.app.layout.navigation.root import getNavigationRoot
 from plone.memoize import ram
 from plone.tiles import Tile
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from zope.component.hooks import getSite
 
 import plone.api
 
@@ -25,22 +25,10 @@ class NavigationTile(Tile):
     _navtree_context = None
 
     @property
-    def navtree_context(self):
-        if self._navtree_context is None:
-            self._navtree_context = getSite()
-        return self._navtree_context
-
-    @property
     def navtree_path(self):
         if self._navtree_path is None:
-            self._navtree_path = '/'.join(
-                self.navtree_context.getPhysicalPath()
-            )
+            self._navtree_path = getNavigationRoot(self.context)
         return self._navtree_path
-
-    @navtree_path.setter
-    def navtree_path(self, value):
-        self.navtree_path = value
 
     @property
     def navtree_depth(self):
