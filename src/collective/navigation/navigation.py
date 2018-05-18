@@ -96,7 +96,7 @@ class NavigationTile(Tile):
         out = u'<ul>' + out + u'</ul>' if out else ''
         return out
 
-    @ram.cache(_result_cachekey)
+    # @ram.cache(_result_cachekey)
     def __call__(self, *args, **kwargs):
         return super(NavigationTile, self).__call__(*args, **kwargs)
 
