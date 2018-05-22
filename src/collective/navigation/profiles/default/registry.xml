@@ -3,9 +3,9 @@
 
   <records prefix="plone.resources/collective.navigation"
             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-      <value key="js">++resource++collective.navigation/collective.navigation.js</value>
+      <value key="js">++plone++collective.navigation/collective.navigation.js</value>
       <value key="css">
-        <element>++resource++collective.navigation/collective.navigation.less</element>
+        <element>++plone++collective.navigation/collective.navigation.less</element>
       </value>
   </records>
 
