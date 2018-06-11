@@ -2,6 +2,7 @@
 from plone.app.layout.navigation.root import getNavigationRoot
 from plone.memoize import ram
 from plone.tiles import Tile
+from plone.app.layout.viewlets import common
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 import plone.api
@@ -18,7 +19,7 @@ def _result_cachekey(fun, self):
     return cachekey
 
 
-class NavigationTile(Tile):
+class NavigationTile(Tile, common.GlobalSectionsViewlet):
 
     _navtree = None
     _navtree_path = None
@@ -33,6 +34,10 @@ class NavigationTile(Tile):
     @property
     def navtree_depth(self):
         return 2
+
+    @property
+    def enableDesc(self):
+        return True
 
     @property
     def navtree(self):
@@ -72,14 +77,14 @@ class NavigationTile(Tile):
     # Template based recursive tree building
     recurse = ViewPageTemplateFile('navigation_recurse.pt')
 
-    def build_tree(self, path):
+    def build_tree(self, path, first_run=True):
         """Non-template based recursive tree building.
         3-4 times faster than template based.
         See figures below.
         """
         out = u''
         for it in self.navtree.get(path, []):
-            sub = self.build_tree(path + '/' + it['id'])
+            sub = self.build_tree(path + '/' + it['id'], first_run=False)
 
             out += u'<li class="{id}{has_sub_class}">'.format(
                 id=it['id'],
@@ -93,7 +98,9 @@ class NavigationTile(Tile):
             out += sub
             out += u'</li>'
 
-        out = u'<ul>' + out + u'</ul>' if out else ''
+        if not first_run:
+            out = u'<ul>' + out + u'</ul>' if out else ''
+
         return out
 
     # @ram.cache(_result_cachekey)

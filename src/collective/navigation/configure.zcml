@@ -2,7 +2,10 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.navigation">
+
+  <include package="plone.tiles" file="meta.zcml"/>
 
   <plone:static
       name="collective.navigation"
@@ -13,6 +16,21 @@
   <adapter
       factory=".indexer.exclude_from_nav_indexer"
       name="exclude_from_nav"
+      />
+
+  <browser:page
+      name="extended-navigation-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class="collective.navigation.controlpanel.NavigationControlPanel"
+      permission="cmf.ManagePortal" />
+
+  <browser:viewlet
+      name="plone.global_sections"
+      manager="plone.app.layout.viewlets.interfaces.IMainNavigation"
+      class=".navigation.NavigationTile"
+      template="sections.pt"
+      layer=".interfaces.INavigationLayer"
+      permission="zope2.View"
       />
 
   <plone:tile
