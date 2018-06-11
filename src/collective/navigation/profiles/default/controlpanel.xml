@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+  <configlet title="Extended menu configuration"
+    action_id="ExtendedNavigationConfiguration" appId="ExtendedNavigationConfiguration"
+    category="Products" condition_expr=""
+    url_expr="string:${portal_url}/@@extended-navigation-controlpanel" visible="True"
+    icon_expr="string:${portal_url}/extended_navigation_icon.gif"
+    i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
+
+</object>

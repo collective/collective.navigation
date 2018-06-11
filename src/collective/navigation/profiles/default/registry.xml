@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <registry>
 
+  <records interface="collective.navigation.interfaces.INavigationConfiguration" />
+
   <records prefix="plone.resources/collective.navigation"
             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
       <value key="js">++plone++collective.navigation/collective.navigation.js</value>
