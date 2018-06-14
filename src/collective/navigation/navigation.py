@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from plone.app.layout.navigation.root import getNavigationRoot
+from plone.app.layout.viewlets import common
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.memoize import ram
 from plone.tiles import Tile
-from plone.app.layout.viewlets import common
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.component import getUtility
 
 import plone.api
 
@@ -82,12 +84,13 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
         3-4 times faster than template based.
         See figures below.
         """
+        normalizer = getUtility(IIDNormalizer)
         out = u''
         for it in self.navtree.get(path, []):
             sub = self.build_tree(path + '/' + it['id'], first_run=False)
 
             out += u'<li class="{id}{has_sub_class}">'.format(
-                id=it['id'],
+                id=normalizer.normalize(it['id']),
                 has_sub_class=' has_subtree' if sub else '',
             )
             out += u'<a href="{url}" class="state-{review_state}">{title}</a>'.format(  # noqa
