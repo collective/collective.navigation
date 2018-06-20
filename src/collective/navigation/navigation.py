@@ -35,7 +35,7 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
 
     @property
     def navtree_depth(self):
-        return 2
+        return 10
 
     @property
     def enableDesc(self):
@@ -102,7 +102,7 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
             out += u'</li>'
 
         if not first_run:
-            out = u'<ul>' + out + u'</ul>' if out else ''
+            out = u'<ul class="has_subtree dropdown">' + out + u'</ul>' if out else ''
 
         return out
 

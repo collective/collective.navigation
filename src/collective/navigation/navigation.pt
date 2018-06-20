@@ -3,7 +3,8 @@
 <body>
 <tal:def define="navtree python:view.build_tree(view.navtree_path)" condition="navtree">
   <nav class="contentmenu">
-      <ul tal:content="structure navtree"></ul>
+        <ul class="plone-nav plone-navbar-nav"
+          tal:content="structure navtree"></ul>
   </nav>
 
 </tal:def>

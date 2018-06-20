@@ -22,7 +22,6 @@
         <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
           <ul id="portal-globalnav" class="plone-nav plone-navbar-nav"
             tal:content="structure navtree"></ul>
-
         </div>
       </tal:def>
     </div>
