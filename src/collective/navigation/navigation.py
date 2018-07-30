@@ -64,6 +64,7 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
             pathkey = '/'.join(it.getPath().split('/')[:-1])
             entry = {
                 'id': it.id,
+                'uid': it.UID,
                 'url': it.getURL(),
                 'title': it.Title,
                 'review_state': it.review_state,
@@ -88,15 +89,19 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
         out = u''
         for it in self.navtree.get(path, []):
             sub = self.build_tree(path + '/' + it['id'], first_run=False)
-
+            opener = u"""<input id="navitem-{uid}" type="checkbox" class="opener">
+                         </input><label for="navitem-{uid}"></label>""".format(
+                uid=it['uid']
+            ) if sub else ''
             out += u'<li class="{id}{has_sub_class}">'.format(
                 id=normalizer.normalize(it['id']),
                 has_sub_class=' has_subtree' if sub else '',
             )
-            out += u'<a href="{url}" class="state-{review_state}">{title}</a>'.format(  # noqa
+            out += u'<a href="{url}" class="state-{review_state}">{title}</a>{opener}'.format(  # noqa
                 url=it['url'],
                 review_state=it['review_state'],
                 title=it['title'],
+                opener=opener if sub else ''
             )
             out += sub
             out += u'</li>'
