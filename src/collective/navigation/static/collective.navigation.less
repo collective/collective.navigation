@@ -10,6 +10,12 @@
 @plone-font-size-base:           16px;
 
 /*General Menu Styling*/
+
+.plone-navbar-collapse.in {
+    overflow-y: unset!important;
+    display: block;
+}
+
 .plone-nav {
   margin: 0 auto;
 
@@ -33,6 +39,12 @@
         text-decoration: none;
       }
     }
+    ul {
+      padding-left: 0.5em;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+    }
     .opener {
       // content: "▾";
       // position: absolute;
@@ -46,8 +58,16 @@
       display: none;
       &:checked + ul {
         background: green;
+      }
+      &:checked + label:after {
+        background: pink;
+        transform: rotate(180deg);
+      }
+      &:checked ~ ul {
+        background: green;
         visibility: visible;
         opacity: 1;
+        height: auto;
       }
     }
     label {
@@ -67,9 +87,6 @@
     }
 
 
-    ul {
-      padding-left: 0.5em;
-    }
   }
 
 
