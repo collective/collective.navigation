@@ -9,7 +9,7 @@ define('collective.navigation',[
         parser: 'mockup',
 
         init: function() {
-            var href = window.location.href;
+            var href = document.querySelector('head link[rel="canonical"]').href || window.location.href;
             $('a', this.$el).each(function () {
                 if (href.indexOf(this.href) !== -1) {
                     var parent = $(this).parent();
