@@ -20,7 +20,7 @@
 
       <tal:def define="navtree python:view.build_tree(view.navtree_path)" condition="navtree">
         <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
-          <ul id="portal-globalnav" class="plone-nav plone-navbar-nav"
+          <ul id="portal-globalnav" class="plone-nav plone-navbar-nav pat-navigation"
             tal:content="structure navtree"></ul>
         </div>
       </tal:def>

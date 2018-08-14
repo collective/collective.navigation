@@ -6,7 +6,7 @@
     condition="navtree">
 
   <nav
-      class="contentmenu"
+      class="contentmenu pat-navigation"
       tal:content="structure navtree"/>
 
 </tal:def>
