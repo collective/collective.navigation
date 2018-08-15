@@ -114,24 +114,3 @@ class NavigationTile(Tile, common.GlobalSectionsViewlet):
     # @ram.cache(_result_cachekey)
     def __call__(self, *args, **kwargs):
         return super(NavigationTile, self).__call__(*args, **kwargs)
-
-
-"""
-this navigation tile vs webcouturier.dropdownmenu / global_sections viewlet
-
-Typical values:
-
-Navigation tile, non-template based tree building:
-cold: 0.22s
-warm: 0.02s - 0.05s
-cached: 0.01s - 0.03s
-
-Navigation tile, template based
-cold: 0.22s
-warm: 0.10s - 0.13s
-cached: 0.01s - 0.03s
-
-recursive global_sections tile (webcouturier.dropdownmenu):
-cold: 7s
-warm: 0.5s - 0.8s
-"""
