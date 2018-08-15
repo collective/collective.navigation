@@ -9,13 +9,12 @@ define([
         parser: 'mockup',
 
         init: function() {
-            var smallDevice = false
             var href = document.querySelector('head link[rel="canonical"]').href || window.location.href;
             $('a', this.$el).each(function () {
                 if (href.indexOf(this.href) !== -1) {
                     var parent = $(this).parent();
 
-                    if (smallDevice) {  // only check checkboxes if it's a small device
+                    if ($('button.plone-navbar-toggle').is(':visible')) {  // only check checkboxes if it's a small device
                         // check the input-openers within the path
                         var check = parent.find('> input');
                         if (check.length) {
@@ -35,24 +34,6 @@ define([
         }
 
     });
-
-     function myFunction(smallDevice) {
-        if (smallDevice.matches) { // If media query matches
-            document.body.style.backgroundColor = "yellow";
-        } else {
-            document.body.style.backgroundColor = "pink";
-        }
-    }
-
-    // instead of doing a media query it probably should check if
-    // $('button.plone-navbar-toggle').is(':visible')
-
-    var smallDevice = window.matchMedia("(max-width: 767px)")
-    myFunction(smallDevice) // Call listener function at run time
-    smallDevice.addListener(myFunction) // Attach listener function on state changes
-
-
-
 
     return Navigation;
 });
