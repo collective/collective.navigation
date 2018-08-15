@@ -24,7 +24,7 @@ define([
                     parent.addClass('inPath');
 
                     // set "current" to the current selected nav item, if it is in the navigation structure.
-                    if (href == this.href) {
+                    if (href === this.href) {
                         parent.addClass('current');
                     }
                 }
