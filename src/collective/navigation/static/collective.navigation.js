@@ -34,7 +34,6 @@ define([
             });
         }
 
-
     });
 
      function myFunction(smallDevice) {
@@ -45,9 +44,15 @@ define([
         }
     }
 
+    // instead of doing a media query it probably should check if
+    // $('button.plone-navbar-toggle').is(':visible')
+
     var smallDevice = window.matchMedia("(max-width: 767px)")
     myFunction(smallDevice) // Call listener function at run time
     smallDevice.addListener(myFunction) // Attach listener function on state changes
+
+
+
 
     return Navigation;
 });
