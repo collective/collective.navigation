@@ -14,17 +14,19 @@ define('collective.navigation',[
                 if (href.indexOf(this.href) !== -1) {
                     var parent = $(this).parent();
 
-                    // check the input-openers within the path
-                    var check = parent.find('> input');
-                    if (check.length) {
-                        check[0].checked = true;
+                    if ($('button.plone-navbar-toggle').is(':visible')) {  // only check checkboxes if it's a small device
+                        // check the input-openers within the path
+                        var check = parent.find('> input');
+                        if (check.length) {
+                            check[0].checked = true;
+                        }
                     }
 
                     // set "inPath" to all nav items which are within the current path
                     parent.addClass('inPath');
 
                     // set "current" to the current selected nav item, if it is in the navigation structure.
-                    if (href == this.href) {
+                    if (href === this.href) {
                         parent.addClass('current');
                     }
                 }
@@ -52,5 +54,5 @@ require([
   }
 });
 
-define("/home/_thet/data/dev/agitator/collective.navigation/src/collective/navigation/static/bundle-collective.navigation.js", function(){});
+define("/Users/peter/workspace/buildout.coredev/src/collective.navigation/src/collective/navigation/static/bundle-collective.navigation.js", function(){});
 
