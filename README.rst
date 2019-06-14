@@ -2,12 +2,11 @@
 collective.navigation
 =====================
 
-Navigation tile that renders in a snap.
+DON'T USE THIS PACKAGE, UPGRADE TO PLONE 5.2
 
 This package is now just a proof of concept for the dropdown menus in Plone 5.2
 A huge amount of improvements have gone into the actual implemention.
 
-DON'T USE THIS PACKAGE, UPGRADE TO PLONE 5.2
 
 Features
 --------
